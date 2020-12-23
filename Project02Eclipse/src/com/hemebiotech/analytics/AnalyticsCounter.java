@@ -44,27 +44,23 @@ public class AnalyticsCounter {
 	public static void writeToFile(List<String> list, String outPutFileName) 
 	{
 		FileWriter writer = null;
-		try {
-			writer = new FileWriter (outPutFileName);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		int i =0;
-		try {
-		while(i < list.size())
+		if(outPutFileName != null)
 		{
-				
-					writer.write(list.get(i)+ "\n");
-
-			i++;
+			try {
+					writer = new FileWriter (outPutFileName);
+	
+				int i =0;
+					while(i < list.size())
+					{		
+								writer.write(list.get(i)+ "\n");
+						i++;
+					}
+					writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		writer.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 
 	/**This is the main method of this application
@@ -75,12 +71,13 @@ public class AnalyticsCounter {
 		String symptomsFileName = "symptoms.txt";
 		String outPutFileName = "result.out";
 		List<String> fileList = new ArrayList<String>();
+		List<String> list_with_occurrences = new ArrayList<String>();
 		
 		ReadSymptomDataFromFile lecture = new ReadSymptomDataFromFile(symptomsFileName);
 		
 		fileList = lecture.GetSymptoms();
 		
-		List<String> list_with_occurrences = calculateOccurances(fileList);
+		list_with_occurrences = calculateOccurances(fileList);
 		
 		/* sort the elements of the list */
 		Collections.sort(list_with_occurrences);
