@@ -18,6 +18,33 @@ import java.util.List;
  */
 public class AnalyticsCounter {
 	
+
+	/**This is the main method of this application
+	 * it reads the symptoms from a text file and returns the list of symptoms and the number of feeds in a file
+	 * @param args array of string arguments
+	 */
+	public static void main(String[] args) {
+		
+		String symptomsFilePath = "symptoms.txt";
+		String outPutFilePath = "result.out";
+		
+		List<String> listLines = new ArrayList<String>();
+		List<String> listSymtomsWithOccurances = new ArrayList<String>();
+		
+		ReadSymptomDataFromFile lecture = new ReadSymptomDataFromFile(symptomsFilePath);
+		
+		listLines = lecture.GetSymptoms();
+		
+		listSymtomsWithOccurances = calculateOccurances(listLines);
+		
+		/* sort the elements of the list in alphabetical order */
+		Collections.sort(listSymtomsWithOccurances);
+		
+		writeToFile(listSymtomsWithOccurances,outPutFilePath);
+		
+		
+	}
+	
 	/**
 	 * This method needs a list of symptoms as argument and returns a list of symptoms with their number of appearances
 	 * @param list list of the symptoms
@@ -62,30 +89,5 @@ public class AnalyticsCounter {
 			}
 		}
 	}
-
-	/**This is the main method of this application
-	 * it reads the symptoms from a text file and returns the list of symptoms and the number of feeds in a file
-	 * @param args array of string arguments
-	 */
-	public static void main(String[] args) {
-		String symptomsFileName = "symptoms.txt";
-		String outPutFileName = "result.out";
-		List<String> fileList = new ArrayList<String>();
-		List<String> list_with_occurrences = new ArrayList<String>();
-		
-		ReadSymptomDataFromFile lecture = new ReadSymptomDataFromFile(symptomsFileName);
-		
-		fileList = lecture.GetSymptoms();
-		
-		list_with_occurrences = calculateOccurances(fileList);
-		
-		/* sort the elements of the list */
-		Collections.sort(list_with_occurrences);
-		
-		writeToFile(list_with_occurrences,outPutFileName);
-		
-		
-	}
-	
 
 }
