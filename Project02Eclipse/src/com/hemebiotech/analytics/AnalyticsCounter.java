@@ -30,12 +30,12 @@ public class AnalyticsCounter {
 		Map<String, Integer> mapSymptomsOccurances = new TreeMap<String, Integer>(); 
 		
 		ReadSymptomDataFromFile lecture = new ReadSymptomDataFromFile(symptomsFilePath);
-		CalculateSymptomsOccurances Calulator= new CalculateSymptomsOccurances(listLines);
-		WriterResultToFile writer = new WriterResultToFile(mapSymptomsOccurances,outPutFilePath);
-		
 		listLines = lecture.getSymptoms();
+		
+		CalculateSymptomsOccurances Calulator= new CalculateSymptomsOccurances(listLines);
 		mapSymptomsOccurances = Calulator.calculateOccurances();
-
+		
+		WriterResultToFile writer = new WriterResultToFile(mapSymptomsOccurances,outPutFilePath);
 		writer.writeToFile();
 		
 	}

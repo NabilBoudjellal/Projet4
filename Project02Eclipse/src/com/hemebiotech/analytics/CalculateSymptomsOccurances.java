@@ -24,7 +24,6 @@ public class CalculateSymptomsOccurances {
 	{
 		this.list = list;
 	}
-	
 	/**
 	 * This method returns a map of symptoms in key and their number of feedings in value
 	 * @return map the map of symptoms with number of feedings

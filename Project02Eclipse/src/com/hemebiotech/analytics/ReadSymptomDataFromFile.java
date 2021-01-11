@@ -10,7 +10,6 @@ import java.util.List;
  * Reads items from a file and stores them in a list 
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
-
 	private String filepath;
 	
 	/**
@@ -20,7 +19,6 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	public ReadSymptomDataFromFile (String filepath) {
 		this.filepath = filepath;
 	}
-	
 	@Override
 	public List<String> getSymptoms() {
 		ArrayList<String> result = new ArrayList<String>();
@@ -39,8 +37,6 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 				e.printStackTrace();
 			}
 		}
-		
 		return result;
 	}
-
 }

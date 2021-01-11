@@ -9,10 +9,8 @@ import java.util.Map;
  * @author Nabil Boudjellal
  */
 public class WriterResultToFile {
-	
 	private String outPutFileName;
 	private Map<String, Integer> map;
-	
 	/**
 	 * This is the constructor of this class he takes in parameter
 	 * @param map the map to write in to the result file
@@ -23,7 +21,6 @@ public class WriterResultToFile {
 		this.outPutFileName = outPutFileName;
 		this.map = map;
 	}
-	
 	/**
 	 * This method writes the contents of a map in a file, each item of the map in a new row
 	 */
